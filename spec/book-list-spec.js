@@ -8,6 +8,5 @@ describe('BookList',function() {
 
         expect(bookList.chapter).toBe(1);
         expect(bookList.count).toBe(2);
-        expect(bookList.price).toBe(8);
     });
 });
