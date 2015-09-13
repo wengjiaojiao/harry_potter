@@ -3,10 +3,22 @@
 var BookList = require('../src/book-list.js');
 
 describe('BookList',function() {
-    it("should have field chapter and price", function() {
-        var bookList = new BookList(1,2);
+    describe('.addBook',function() {
+        it("should get the single book list", function() {
+            var bookList = new BookList();
 
-        expect(bookList.chapter).toBe(1);
-        expect(bookList.count).toBe(2);
+            bookList.addBook(1,2);
+            expect(bookList.bookList).toEqual({1:2});
+        });
+
+        it("should get the single book list", function() {
+            var bookList = new BookList();
+
+            bookList.addBook(1,2);
+            bookList.addBook(2,2);
+            bookList.addBook(3,1);
+            expect(bookList.bookList).toEqual({1:2,2:2,3:1});
+        });
     });
+
 });
