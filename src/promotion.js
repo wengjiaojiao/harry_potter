@@ -1,3 +1,5 @@
+var _ = require('../node_modules/lodash-3.9.0-npm');
+
 function Promotion(bookPrice) {
     this.bookPrice = bookPrice;
 }
@@ -22,6 +24,10 @@ Promotion.prototype.differentPromotion = function(basket) {
         }
     });
     return total;
+};
+
+Promotion.prototype.specialPromotion = function (basket) {
+    return this.differentPromotion(basket) - 0.4;
 };
 
 module.exports = Promotion;
