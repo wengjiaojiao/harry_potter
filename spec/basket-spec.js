@@ -1,20 +1,24 @@
 'use strict';
 
-var BookList = require('../src/book-list');
 var Basket = require('../src/basket.js');
 
 describe('Basket',function() {
-    describe('.group',function() {
-        it("should group the different books", function() {
-            var bookList = new BookList();
+    describe('#getMaxCount', function () {
+        it('should get the max count in the bookList', function() {
+            var basket = new Basket();
+            var result = basket.getMaxCount({1:2,2:2,3:1});
 
-            bookList.addBook(1,2);
-            bookList.addBook(2,2);
-            bookList.addBook(3,1);
+            expect(result).toBe(2);
+        });
+    });
+
+    describe('#group',function() {
+        it("should group the different books", function() {
             var basket = new Basket();
 
-            basket.group(bookList.bookList);
-            expect(basket.basket).toEqual([1,2,3],[1,2]);
+            basket.getMaxCount({1:2,2:2,3:1});
+            basket.group({1:2,2:2,3:1});
+            expect(basket.basket).toEqual([[1,2,3],[1,2]]);
         });
     });
 
