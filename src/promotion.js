@@ -4,7 +4,7 @@ function Promotion(bookPrice) {
     this.bookPrice = bookPrice;
 }
 
-Promotion.prototype.differentPromotion = function(basket) {
+Promotion.prototype.promotionPrice = function(basket) {
     var bookDiscount = [0.95, 0.9, 0.8, 0.75];
     var bookCount = [2, 3, 4, 5];
     var total = 0;
@@ -27,7 +27,7 @@ Promotion.prototype.differentPromotion = function(basket) {
 };
 
 Promotion.prototype.specialPromotion = function (basket) {
-    return this.differentPromotion(basket) - 0.4;
+    return this.promotionPrice(basket) - 0.4;
 };
 
 module.exports = Promotion;
