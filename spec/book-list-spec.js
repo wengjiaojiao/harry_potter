@@ -3,7 +3,7 @@
 var BookList = require('../src/book-list.js');
 
 describe('BookList',function() {
-    describe('.addBook',function() {
+    describe('#addBook',function() {
         it("should get the single book list", function() {
             var bookList = new BookList();
 
