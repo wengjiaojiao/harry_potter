@@ -1,8 +1,8 @@
-function BookList(){
+function BookList() {
     this.bookList = {};
 }
 
-BookList.prototype.addBook = function (chapter, count){
+BookList.prototype.addBook = function(chapter, count) {
     this.bookList[chapter] = count;;
 }
 

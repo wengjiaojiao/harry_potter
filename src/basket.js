@@ -1,13 +1,13 @@
 var _ = require('lodash');
 
-function Basket(){
+function Basket() {
     this.basket = [];
 }
 
 Basket.prototype.getMaxCount = function(bookList) {
     var max;
 
-    max = _.max(bookList, function (book) {
+    max = _.max(bookList, function(book) {
         return book;
     });
     return max;
@@ -17,16 +17,16 @@ Basket.prototype.group = function(bookList) {
     var that = this;
     var maxCount = this.getMaxCount(bookList);
 
-    while(maxCount != 0){
+    while (maxCount != 0) {
         var subArray = [];
 
         for (var k in bookList) {
-            if(bookList[k] !=0) {
-                subArray.push (Number(k));
+            if (bookList[k] != 0) {
+                subArray.push(Number(k));
                 bookList[k]--;
             }
         }
-        maxCount --;
+        maxCount--;
         that.basket.push(subArray);
     }
 };

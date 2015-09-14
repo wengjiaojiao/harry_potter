@@ -26,7 +26,7 @@ Promotion.prototype.promotionPrice = function(basket) {
     return total;
 };
 
-Promotion.prototype.specialPromotion = function (basket) {
+Promotion.prototype.specialPromotion = function(basket) {
     return this.promotionPrice(basket) - 0.4;
 };
 
