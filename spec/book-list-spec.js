@@ -7,16 +7,16 @@ describe('BookList',function() {
         it("should get the single book list", function() {
             var bookList = new BookList();
 
-            bookList.addBook(1,2);
+            bookList.addBook({chapter:1,count:2});
             expect(bookList.bookList).toEqual({1:2});
         });
 
         it("should get the single book list", function() {
             var bookList = new BookList();
 
-            bookList.addBook(1,2);
-            bookList.addBook(2,2);
-            bookList.addBook(3,1);
+            bookList.addBook({chapter:1,count:2});
+            bookList.addBook({chapter:2,count:2});
+            bookList.addBook({chapter:3,count:1});
             expect(bookList.bookList).toEqual({1:2,2:2,3:1});
         });
     });
