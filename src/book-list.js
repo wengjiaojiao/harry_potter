@@ -2,8 +2,8 @@ function BookList() {
     this.bookList = {};
 }
 
-BookList.prototype.addBook = function(book) {
-    this.bookList[book.chapter] = book.count;
+BookList.prototype.addBook = function(book,count) {
+    this.bookList[book.chapter] = count;
 }
 
 module.exports = BookList;
