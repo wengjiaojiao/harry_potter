@@ -4,16 +4,19 @@ function Calculator() {
     this.subtotal = 0;
 }
 
-Calculator.prototype.priceCalculator = function(basket, promotion) {
+Calculator.prototype.priceCalculator = function(basket, discount) {
     var that = this;
-    var specialGroupOne = 3;
-    var specialGroupTwo = 5;
-    var specialOne = this.filterSpecial(basket, specialGroupOne);
-    var specialTwo = this.filterSpecial(basket, specialGroupTwo);
+    var threeDifferentGroup = 3;
+    var fiveDifferentGroup = 5;
+    var specialOne = this.filterSpecial(basket, threeDifferentGroup);
+    var specialTwo = this.filterSpecial(basket, fiveDifferentGroup);
     var isSpecial = specialOne.length > 0 && specialTwo.length > 0;
 
-    that.subtotal = isSpecial ? promotion.specialPromotion(basket)
-                              : promotion.promotionPrice(basket);
+    if(!isSpecial) {
+        that.subtotal = this.normalCalculator(basket, discount);
+    } else {
+        that.subtotal = this.specialCalculator(basket, discount);
+    }
 }
 
 Calculator.prototype.filterSpecial = function(basket, specialLength) {
@@ -22,5 +25,20 @@ Calculator.prototype.filterSpecial = function(basket, specialLength) {
     });
 
     return special;
+}
+
+Calculator.prototype.normalCalculator = function(basket, discount) {
+    var that = this;
+    var subtotal = 0;
+
+    basket.forEach(function(val, i) {
+        subtotal += discount.discountRule(basket)[i] * val.length;
+    });
+
+    return subtotal;
+}
+
+Calculator.prototype.specialCalculator = function(basket, discount) {
+    return this.normalCalculator(basket, discount) - 0.4;
 }
 module.exports = Calculator;
