@@ -4,7 +4,7 @@ function Basket() {
     this.basket = [];
 }
 
-Basket.prototype.getMaxCount = function(bookList) {
+Basket.getMaxCount = function(bookList) {
     var max;
 
     max = _.max(bookList, function(book) {
@@ -15,7 +15,7 @@ Basket.prototype.getMaxCount = function(bookList) {
 
 Basket.prototype.group = function(bookList) {
     var that = this;
-    var maxCount = this.getMaxCount(bookList);
+    var maxCount = Basket.getMaxCount(bookList);
 
     while (maxCount != 0) {
         var subArray = [];
