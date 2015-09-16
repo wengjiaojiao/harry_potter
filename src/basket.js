@@ -15,20 +15,27 @@ Basket.getMaxCount = function(bookList) {
 
 Basket.prototype.group = function(bookList) {
     var that = this;
-    var maxCount = Basket.getMaxCount(bookList);
+    var bookListCopy = _.clone(bookList,true);
+    var maxCount = Basket.getMaxCount(bookListCopy);
 
     while (maxCount != 0) {
         var subArray = [];
 
-        for (var k in bookList) {
-            if (bookList[k] != 0) {
-                subArray.push(Number(k));
-                bookList[k]--;
-            }
-        }
+        subArray = Basket.getSubArray(bookListCopy);
         maxCount--;
         that.basket.push(subArray);
     }
 };
 
+Basket.getSubArray = function(bookList) {
+    var subArray = [];
+
+    for (var book in bookList) {
+        if (bookList[book] != 0) {
+            subArray.push(Number(book));
+            bookList[book]--;
+        }
+    }
+    return subArray;
+}
 module.exports = Basket;
