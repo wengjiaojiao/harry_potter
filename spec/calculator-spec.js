@@ -1,30 +1,30 @@
 'use strict';
 
 var Calculator = require('../src/calculator.js');
-var Promotion = require('../src/promotion.js');
+var Discount = require('../src/discount.js');
 
 describe('Calculator',function() {
     describe('#priceCalculator',function() {
         it('should calculate the price when there have not business',function() {
             var calculator = new Calculator();
-            var promotion = new Promotion(8);
+            var discount = new Discount(8);
 
-            calculator.priceCalculator([],promotion);
+            calculator.priceCalculator([],discount);
             expect(calculator.subtotal).toBe(0);
         });
         it('should calculate the price when it is the normal group',function() {
             var calculator = new Calculator();
-            var promotion = new Promotion(8);
+            var discount = new Discount(8);
 
-            calculator.priceCalculator([[1,2,3],[1,2]],promotion);
+            calculator.priceCalculator([[1,2,3],[1,2]],discount);
             expect(calculator.subtotal).toBe(36.8);
         });
 
         it('should calculate the price when it is the special group',function() {
             var calculator = new Calculator();
-            var promotion = new Promotion(8);
+            var discount = new Discount(8);
 
-            calculator.priceCalculator([[1,2,3,4,5],[1,2,3]],promotion);
+            calculator.priceCalculator([[1,2,3,4,5],[1,2,3]],discount);
             expect(calculator.subtotal).toBe(51.2);
         });
     });
