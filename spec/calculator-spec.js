@@ -28,23 +28,9 @@ describe('Calculator',function() {
             var discount = new Discount();
             var book = new Book();
 
-            calculator.priceCalculator([[1,2,3,4,5],[1,2,3]],discount,book);
+            calculator.priceCalculator([[1,2,3,4],[1,2,3,5]],discount,book);
             expect(calculator.subtotal).toBe(51.2);
         });
     });
-    describe('#filterSpecial', function() {
-        it('should filter the array if it is in the special situation', function() {
-            var calculator = new Calculator();
-            var result = calculator.filterSpecial([[1,2,3],[1]],3);
 
-            expect(result).toEqual([[1,2,3]]);
-        });
-
-        it('should print a null array when it is not in the special situation', function() {
-            var calculator = new Calculator();
-            var result = calculator.filterSpecial([[1,2,3],[1]],2);
-
-            expect(result).toEqual([]);
-        });
-    });
 });
